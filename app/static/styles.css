@@ -1,0 +1,13 @@
+body {
+    background: #476a8e;
+}
+
+img {
+    display: block;
+    width: auto;
+    max-width: 50%;
+	height: auto;
+    margin: auto 0;
+	vertical-align: middle;
+	box-shadow: 0 0 25px #000;
+}
