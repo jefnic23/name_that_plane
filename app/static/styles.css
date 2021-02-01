@@ -1,5 +1,5 @@
 body {
-    background: #476a8e;
+    background: #333;
 }
 
 img {
@@ -10,4 +10,23 @@ img {
     margin: auto 0;
 	vertical-align: middle;
 	box-shadow: 0 0 25px #000;
+}
+
+.game-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	grid-gap: 4rem;
+	width: auto;
+	max-width: 50%;
+	margin: 0 auto;
+	margin-bottom: 6rem;
+}
+
+.button {
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+.button:hover {
+	
 }
