@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="/static/styles.css">
 <section id="game" class="game-section">
 	<div class="game-image">
-		<img src="\static\pics\{{ image }}">
+		<img src="{{ image }}"/>
 	</div>
-	<div class="game-grid">
-		<button id="answer-1" class="answer-btn">{{ answer_1 }}</button>
-		<button id="answer-2" class="answer-btn">{{ answer_2 }}</button>
-		<button id="answer-3" class="answer-btn">{{ answer_3 }}</button>
-		<button id="answer-4" class="answer-btn">{{ answer_4 }}</button>
-	</div>
+	<form method='post' action='/' class="game-grid">
+		<button type="submit" name="answer-1" value="{{ answer_1 }}">{{ answer_1 }}</button>
+		<button type="submit" name="answer-2" value="{{ answer_2 }}">{{ answer_2 }}</button>
+		<button type="submit" name="answer-3" value="{{ answer_3 }}">{{ answer_3 }}</button>
+		<button type="submit" name="answer-4" value="{{ answer_4 }}">{{ answer_4 }}</button>
+	</form>
 </section>

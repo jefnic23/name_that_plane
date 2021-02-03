@@ -18,15 +18,11 @@ img {
 .game-grid {
 	display: grid;
 	grid-gap: 1rem;
-	width: 75%;
+	width: 50%;
 	margin: auto auto auto;
 }
 
 .button {
 	background-color: #fff;
 	border-color: #ccc;
-}
-
-.button:hover {
-	
 }
