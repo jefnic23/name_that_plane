@@ -26,3 +26,12 @@ img {
 	background-color: #fff;
 	border-color: #ccc;
 }
+
+h1 {
+	text-align: center;
+}
+
+#refresh-btn {
+	display: block;
+	margin: auto auto auto;
+}

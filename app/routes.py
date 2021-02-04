@@ -1,5 +1,4 @@
-from flask import render_template, request
-from flask_wtf import FlaskForm
+from flask import render_template, request, redirect, url_for
 import random, pandas as pd
 from app import app
 
@@ -31,7 +30,6 @@ for a in aircraft_false:
         aircraft_false.remove(a)
 aircraft_false = random.sample(aircraft_false, 3)
 choices = random.sample(aircraft_false + [aircraft_true], 4)
-image = '/static/pics/{}'.format(pic)
 answer_1 = choices[0]
 answer_2 = choices[1]
 answer_3 = choices[2]
@@ -39,35 +37,29 @@ answer_4 = choices[3]
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    global quiz_counter 
+    image = '/static/pics/{}'.format(pic)
     if request.method == 'POST':
         if request.form.get("answer-1"):
             if answer_1 == aircraft_true:
-                quiz_counter += 1
-                return "<h1>that's right!</h1><h2>" + aircraft_true + answer_1 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=True)
             else:
-                quiz_counter += 1
-                return "<h1>sorry, that's incorrect</h1><h2>" + aircraft_true + answer_1 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=False)
         elif request.form.get("answer-2"):
             if answer_2 == aircraft_true:
-                quiz_counter += 1
-                return "<h1>that's right!</h1><h2>" + aircraft_true + answer_2 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=True)
             else:
-                quiz_counter += 1
-                return "<h1>sorry, that's incorrect</h1><h2>" + aircraft_true + answer_2 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=False)
         elif request.form.get("answer-3"):
             if answer_3 == aircraft_true:
-                quiz_counter += 1
-                return "<h1>that's right!</h1><h2>" + aircraft_true + answer_3 + "</h2>"
+               return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=True)
             else:
-                quiz_counter += 1
-                return "<h1>sorry, that's incorrect</h1><h2>" + aircraft_true + answer_3 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=False)
         elif request.form.get("answer-4"):
             if answer_4 == aircraft_true:
-                quiz_counter += 1
-                return "<h1>that's right!</h1><h2>" + aircraft_true + answer_4 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=True)
             else:
-                quiz_counter += 1
-                return "<h1>sorry, that's incorrect</h1><h2>" + aircraft_true + answer_4 + "</h2>"
+                return render_template('answer.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4, answer=False)
+        else:
+            return redirect(url_for('main'))
     else:
         return render_template('main.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)

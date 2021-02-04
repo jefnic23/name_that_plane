@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/static/styles.css">
-<section id="game" class="game-section">
+<section class="game-section">
 	<div class="game-image">
 		<img src="{{ image }}"/>
 	</div>
@@ -9,4 +9,6 @@
 		<button type="submit" name="answer-3" value="{{ answer_3 }}">{{ answer_3 }}</button>
 		<button type="submit" name="answer-4" value="{{ answer_4 }}">{{ answer_4 }}</button>
 	</form>
+	{% block content %}
+	{% endblock %}
 </section>
