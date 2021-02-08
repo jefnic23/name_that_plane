@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+    {% if answer %}
+    <h1>that's right!</h1>
+    {% else %}
+    <h1>sorry, that's incorrect</h1>
+    {% endif %}
+    <form method='post' action='/'>
+        <button type="submit" name="refresh" id="refresh-btn">Next question</button>
+    </form>
+{% endblock %}  
