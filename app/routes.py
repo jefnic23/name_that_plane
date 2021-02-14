@@ -4,10 +4,10 @@ from app import app
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    aircraft_list = pd.read_pickle('E:/Coding/name_that_plane/app/static/dicts/otherModels.pickle')
-    airbus_models = pd.read_pickle('E:/Coding/name_that_plane/app/static/dicts/airbusModels.pickle')
-    boeing_models = pd.read_pickle('E:/Coding/name_that_plane/app/static/dicts/boeingModels.pickle')
-    planes_and_names = pd.read_pickle('E:/Coding/name_that_plane/app/static/dicts/planes_and_names.pickle')
+    aircraft_list = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/otherModels.pickle')
+    airbus_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/airbusModels.pickle')
+    boeing_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/boeingModels.pickle')
+    planes_and_names = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/planes_and_names.pickle')
     aircraft_list = random.sample(aircraft_list, len(aircraft_list))
     quiz_list = random.sample(planes_and_names, len(planes_and_names))
     quiz_counter = 0
