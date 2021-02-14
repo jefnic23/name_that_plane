@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-import random, pandas as pd
+import random, time, pandas as pd
 from app import app
 
 @app.route('/', methods=['GET', 'POST'])
@@ -38,27 +38,8 @@ def main():
     image = '/static/pics/{}'.format(pic)
         
     if request.method == 'POST':
-        if request.form.get("answer-1"):
-            if answer_1 == aircraft_true:
-                return redirect(url_for('main'))
-            else:
-                return redirect(url_for('main'))
-        elif request.form.get("answer-2"):
-            if answer_2 == aircraft_true:
-                return redirect(url_for('main'))
-            else:
-                return redirect(url_for('main'))
-        elif request.form.get("answer-3"):
-            if answer_3 == aircraft_true:
-                return redirect(url_for('main'))
-            else:
-                return redirect(url_for('main'))
-        elif request.form.get("answer-4"):
-            if answer_4 == aircraft_true:
-                return redirect(url_for('main'))
-            else:
-                return redirect(url_for('main'))
-        else:
-            return redirect(url_for('main'))
+        time.sleep(1)
+        return redirect(url_for('main'))
     else:
-        return render_template('main.html', image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
+        time.sleep(1)
+        return render_template('main.html', aircraft_true=aircraft_true, image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)

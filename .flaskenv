@@ -1,1 +1,1 @@
-FLASK_APP=name_that_plane.py
+FLASK_APP=spot_the_plane.py
