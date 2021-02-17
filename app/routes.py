@@ -3,7 +3,7 @@ import random, time, pandas as pd
 from app import app
 
 @app.route('/', methods=['GET', 'POST'])
-def main():
+def index():
     aircraft_list = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/otherModels.pickle')
     airbus_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/airbusModels.pickle')
     boeing_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/boeingModels.pickle')
@@ -39,7 +39,7 @@ def main():
         
     if request.method == 'POST':
         time.sleep(1)
-        return redirect(url_for('main'))
+        return redirect(url_for('index'))
     else:
         time.sleep(1)
-        return render_template('main.html', aircraft_true=aircraft_true, image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
+        return render_template('index.html', aircraft_true=aircraft_true, image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)

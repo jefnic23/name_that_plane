@@ -17,13 +17,11 @@ body {
     background: #476a8e;
 }
 
-h1 {
-	font-family: 'Impact';
-	font-style: italic;
-	font-weight: bold; 
-	font-size: 4rem;
-	text-align: center;
-	color: #FFF;
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 62.5%;
 }
 
 div {
@@ -38,7 +36,7 @@ div {
     animation-fill-mode: both;
 }
 
-img {
+.plane {
     display: block;
     max-width: 75%;
     margin-left: auto;
@@ -66,4 +64,10 @@ button {
 
 button:hover {
 	background-color: #707070;
+}
+
+#next_plane {
+	width: 50%;
+	margin: auto auto auto;
+	visibility: hidden;
 }
