@@ -69,5 +69,5 @@ button:hover {
 #next_plane {
 	width: 50%;
 	margin: auto auto auto;
-	visibility: hidden;
+	display: none;
 }

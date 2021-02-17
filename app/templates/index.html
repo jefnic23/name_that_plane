@@ -7,13 +7,15 @@
 			var aircraftTrue = "{{ aircraft_true }}";
 			if (guess == aircraftTrue) {
 				document.getElementById(answer).style.backgroundColor = "green";
-				document.getElementById("next_plane").style.visibility = "visible";
+				$("#next_plane").fadeIn();
+				// document.getElementById("next_plane").style.visibility = "visible";
 			} else {
 				document.getElementById(answer).style.backgroundColor = 'red';
 				for (var i=0; i < document.getElementsByTagName('button').length; i++) {
 					if (document.getElementsByTagName('button')[i].innerHTML == aircraftTrue) {
 						document.getElementsByTagName('button')[i].style.backgroundColor = 'green';
-						document.getElementById("next_plane").style.visibility = "visible";
+						$("#next_plane").fadeIn();
+						// document.getElementById("next_plane").style.visibility = "visible";
 					};
 				};
 			};
@@ -31,7 +33,7 @@
 			<button type="submit" id="answer-2" value="{{ answer_2 }}" onClick="getAnswer('answer-2')">{{ answer_2 }}</button>
 			<button type="submit" id="answer-3" value="{{ answer_3 }}" onClick="getAnswer('answer-3')">{{ answer_3 }}</button>
 			<button type="submit" id="answer-4" value="{{ answer_4 }}" onClick="getAnswer('answer-4')">{{ answer_4 }}</button>
-			<button type="submit" id="next_plane" class="fadeIn">...next plane...</button>
+			<button type="submit" id="next_plane">...next plane...</button>
 		</form>
 	</section>
 </body>
