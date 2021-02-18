@@ -1,9 +1,16 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 import random, time, pandas as pd
 from app import app
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        return redirect(url_for('quiz'))
+    else:
+        return render_template('index.html')
+
+@app.route('/quiz', methods=['GET', 'POST'])
+def quiz():
     aircraft_list = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/otherModels.pickle')
     airbus_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/airbusModels.pickle')
     boeing_models = pd.read_pickle('E:/Coding/spot_the_plane/app/static/dicts/boeingModels.pickle')
@@ -39,7 +46,7 @@ def index():
         
     if request.method == 'POST':
         time.sleep(1)
-        return redirect(url_for('index'))
+        return redirect(url_for('quiz'))
     else:
         time.sleep(1)
-        return render_template('index.html', aircraft_true=aircraft_true, image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
+        return render_template('quiz.html', aircraft_true=aircraft_true, image=image, answer_1=answer_1, answer_2=answer_2, answer_3=answer_3, answer_4=answer_4)
