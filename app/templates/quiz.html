@@ -2,6 +2,7 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
+
 		function getAnswer(answer) {
 			var guess = document.getElementById(answer).getAttribute('value');
 			var aircraftTrue = "{{ aircraft_true }}";
@@ -17,7 +18,8 @@
 					};
 				};
 			};
-		};
+		}
+
 	</script>
 </head>
 <body>
@@ -26,11 +28,13 @@
 		<div class="game-image">
 			<img src="{{ image }}" class="plane"/>
 		</div>
-		<form method='post' action='/quiz' class="game-grid">
-			<button type="submit" id="answer-1" value="{{ answer_1 }}" onClick="getAnswer('answer-1')">{{ answer_1 }}</button>
-			<button type="submit" id="answer-2" value="{{ answer_2 }}" onClick="getAnswer('answer-2')">{{ answer_2 }}</button>
-			<button type="submit" id="answer-3" value="{{ answer_3 }}" onClick="getAnswer('answer-3')">{{ answer_3 }}</button>
-			<button type="submit" id="answer-4" value="{{ answer_4 }}" onClick="getAnswer('answer-4')">{{ answer_4 }}</button>
+		<div class="game-grid">
+			<button id="answer-1" value="{{ answer_1 }}" onClick="getAnswer('answer-1')">{{ answer_1 }}</button>
+			<button id="answer-2" value="{{ answer_2 }}" onClick="getAnswer('answer-2')">{{ answer_2 }}</button>
+			<button id="answer-3" value="{{ answer_3 }}" onClick="getAnswer('answer-3')">{{ answer_3 }}</button>
+			<button id="answer-4" value="{{ answer_4 }}" onClick="getAnswer('answer-4')">{{ answer_4 }}</button>
+		</div>
+		<form method="post" action="/quiz" class="game-grid">
 			<button type="submit" id="next_plane">...next plane...</button>
 		</form>
 	</section>
