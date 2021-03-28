@@ -3,9 +3,39 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
+		var images = {{ images | tojson }};
+		var random = Math.floor(Math.random() * images.length);
+		var image = images[random];
+		var aircraftTrue = images[random].split('_')[0];
+		var planeTypes = [... new Set(images.filter(function(x) {
+			if (x.split('_')[0] === aircraftTrue) {
+				return false;
+			} else {
+				return true;
+			}
+		}).map(function(x, i, a) {
+			return x.split('_')[0];
+		}))];
+
+		function shuffleArray(array) {
+			for (var i = array.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1));
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}
+			return array;
+		};
+
+		var aircraftFalse = shuffleArray(planeTypes).slice(0,3);
+		var choices = shuffleArray(aircraftFalse.concat(aircraftTrue));
+		var answer1 = choices[0]
+		var answer2 = choices[1]
+		var answer3 = choices[2]
+		var answer4 = choices[3]
+
 		function getAnswer(answer) {
-			var guess = document.getElementById(answer).getAttribute('value');
-			var aircraftTrue = "{{ aircraft_true }}";
+			var guess = document.getElementById(answer).getAttribute('innerHTML');
 			if (guess == aircraftTrue) {
 				document.getElementById(answer).style.backgroundColor = "green";
 				$("#next_plane").fadeIn();
@@ -18,7 +48,14 @@
 					};
 				};
 			};
-		}
+			for (var i=0; i < document.getElementsByClassName("answer_button").length; i++) {
+					document.getElementsByClassName("answer_button")[i].disabled = true;
+				};
+		};
+
+		function refreshPage() {
+			window.location.reload();
+		};
 
 	</script>
 </head>
@@ -26,16 +63,21 @@
 	<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
 	<section class="game-section fadeIn">
 		<div class="game-image">
-			<img src="{{ image }}" class="plane"/>
+			<img id='image' class="plane"/>
 		</div>
 		<div class="game-grid">
-			<button id="answer-1" value="{{ answer_1 }}" onClick="getAnswer('answer-1')">{{ answer_1 }}</button>
-			<button id="answer-2" value="{{ answer_2 }}" onClick="getAnswer('answer-2')">{{ answer_2 }}</button>
-			<button id="answer-3" value="{{ answer_3 }}" onClick="getAnswer('answer-3')">{{ answer_3 }}</button>
-			<button id="answer-4" value="{{ answer_4 }}" onClick="getAnswer('answer-4')">{{ answer_4 }}</button>
+			<button class="answer_button" id="answer-1" onClick="getAnswer('answer-1')"></button>
+			<button class="answer_button" id="answer-2" onClick="getAnswer('answer-2')"></button>
+			<button class="answer_button" id="answer-3" onClick="getAnswer('answer-3')"></button>
+			<button class="answer_button" id="answer-4" onClick="getAnswer('answer-4')"></button>
+			<button type="submit" id="next_plane" onClick="refreshPage()">...next plane...</button>
 		</div>
-		<form method="post" action="/quiz" class="game-grid">
-			<button type="submit" id="next_plane">...next plane...</button>
-		</form>
 	</section>
+	<script>
+		document.getElementById('image').src = "static/images/" + image;
+		document.getElementById('answer-1').innerHTML = answer1;
+		document.getElementById('answer-2').innerHTML = answer2;
+		document.getElementById('answer-3').innerHTML = answer3;
+		document.getElementById('answer-4').innerHTML = answer4;
+	</script>
 </body>
