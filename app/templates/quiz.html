@@ -1,12 +1,12 @@
 <head>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/scripts.js"></script>
 	<script type="text/javascript">
 
 		var images = {{ images | tojson }};
-		var random = Math.floor(Math.random() * images.length);
-		var image = images[random];
-		var aircraftTrue = images[random].split('_')[0];
+		var image_index = 0
+		var aircraftTrue = images[image_index].split('_')[0];
 		var planeTypes = [... new Set(images.filter(function(x) {
 			if (x.split('_')[0] === aircraftTrue) {
 				return false;
@@ -17,52 +17,23 @@
 			return x.split('_')[0];
 		}))];
 
-		function shuffleArray(array) {
-			for (var i = array.length - 1; i > 0; i--) {
-				var j = Math.floor(Math.random() * (i + 1));
-				var temp = array[i];
-				array[i] = array[j];
-				array[j] = temp;
-			}
-			return array;
-		};
-
 		var aircraftFalse = shuffleArray(planeTypes).slice(0,3);
 		var choices = shuffleArray(aircraftFalse.concat(aircraftTrue));
-		var answer1 = choices[0]
-		var answer2 = choices[1]
-		var answer3 = choices[2]
-		var answer4 = choices[3]
-
-		function getAnswer(answer) {
-			var guess = document.getElementById(answer).getAttribute('innerHTML');
-			if (guess == aircraftTrue) {
-				document.getElementById(answer).style.backgroundColor = "green";
-				$("#next_plane").fadeIn();
-			} else {
-				document.getElementById(answer).style.backgroundColor = 'red';
-				for (var i=0; i < document.getElementsByTagName('button').length; i++) {
-					if (document.getElementsByTagName('button')[i].innerHTML == aircraftTrue) {
-						document.getElementsByTagName('button')[i].style.backgroundColor = 'green';
-						$("#next_plane").fadeIn();
-					};
-				};
-			};
-			for (var i=0; i < document.getElementsByClassName("answer_button").length; i++) {
-					document.getElementsByClassName("answer_button")[i].disabled = true;
-				};
-		};
-
-		function refreshPage() {
-			window.location.reload();
-		};
+		var answer1 = choices[0];
+		var answer2 = choices[1];
+		var answer3 = choices[2];
+		var answer4 = choices[3];
+		var correct_guesses = 0;
 
 	</script>
 </head>
 <body>
-	<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
-	<section class="game-section fadeIn">
-		<div class="game-image">
+	<section class="game-grid">
+		<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
+		<p id="score"></p>
+	</section>
+	<section class="game-section">
+		<div class="game-grid">
 			<img id='image' class="plane"/>
 		</div>
 		<div class="game-grid">
@@ -70,14 +41,17 @@
 			<button class="answer_button" id="answer-2" onClick="getAnswer('answer-2')"></button>
 			<button class="answer_button" id="answer-3" onClick="getAnswer('answer-3')"></button>
 			<button class="answer_button" id="answer-4" onClick="getAnswer('answer-4')"></button>
-			<button type="submit" id="next_plane" onClick="refreshPage()">...next plane...</button>
+			<button type="submit" id="next_plane" onClick="nextPlane()">...next plane...</button>
 		</div>
 	</section>
 	<script>
-		document.getElementById('image').src = "static/images/" + image;
+
+		document.getElementById('image').src = "static/images/" + images[image_index];
 		document.getElementById('answer-1').innerHTML = answer1;
 		document.getElementById('answer-2').innerHTML = answer2;
 		document.getElementById('answer-3').innerHTML = answer3;
 		document.getElementById('answer-4').innerHTML = answer4;
+		document.getElementById("score").innerHTML = correct_guesses + "/" + image_index;
+
 	</script>
 </body>
