@@ -3,9 +3,11 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-	<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
-	<img src="{{ url_for('static', filename='home_image.jpg') }}" class="plane"/>
-	<form method='post' class="game-grid">
-		<button type="submit" id="begin_quiz">begin quiz!</button>
-	</form>
+	<div class="center">
+		<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
+		<img src="{{ url_for('static', filename='home_image.jpg') }}" class="plane"/>
+		<form method='post'>
+			<button type="submit" id="begin_quiz">begin quiz!</button>
+		</form>
+	</div>
 </body>

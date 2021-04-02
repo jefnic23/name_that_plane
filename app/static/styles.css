@@ -7,6 +7,13 @@
 	opacity: 0;
 	transition: opacity 500ms;
 }
+  
+.center {
+	margin: auto auto auto;
+	position: relative;
+	top: 25%;
+	bottom: 25%;
+}
 
 body {
     background: #476a8e;
@@ -17,6 +24,13 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	width: 75%;
+}
+
+#begin_quiz {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 25%;
 }
 
 div {
@@ -47,11 +61,12 @@ form {
 .game-grid {
 	display: grid;
 	grid-gap: 1rem;
-	width: 90%;
-	margin: auto auto auto;
+	margin: 1rem auto 1rem;
 }
 
 button {
+	width: 50%;
+	margin: auto auto auto;
 	background-color: #8c8c8c;
 	border-color: #000;
 	border-style: solid;
@@ -60,6 +75,7 @@ button {
 	color: #FFF;
 	padding: 15px 40px;
 	font-size: 1rem;
+	font-style: bold;
 	transition: background-color 0.3s ease-out 0s;
 }
 
@@ -68,7 +84,7 @@ button:hover {
 }
 
 #next_plane {
-	width: 75%;
+	width: 25%;
 	margin: auto auto auto;
 	display: none;
 }
