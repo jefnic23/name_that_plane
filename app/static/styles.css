@@ -95,15 +95,18 @@ button:hover {
 	color: #FFF;
 	border-style: solid;
 	border-color: #1D364C;
+	border-width: 0.1;
+	border-radius: 4px;
 	font-size: 1rem;
 	font-weight: 300;
 	padding: 1rem 2rem;
 	margin: auto auto auto;
-	max-width: 35%;
+	width: 35%;
 }
 
 #next_plane {
-	max-width: 35%;
+	width: 35%;
 	margin: auto auto auto;
+	padding: 1rem 2rem;
 	display: none;
 }
