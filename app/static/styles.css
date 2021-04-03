@@ -1,11 +1,11 @@
 .show {
 	opacity: 1;
-	transition: opacity 500ms;
+	transition: opacity 1000ms;
 }
 
 .hide {
 	opacity: 0;
-	transition: opacity 500ms;
+	transition: opacity 1000ms;
 }
   
 .center {
@@ -27,10 +27,25 @@ body {
 }
 
 #begin_quiz {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 25%;
+	display: flex;
+	width: 50%;
+	margin: auto auto auto;
+	background-color: #8c8c8c;
+	border-color: #000;
+	border-style: solid;
+	border-width: 0.1;
+	border-radius: 4px;
+	color: #FFF;
+	padding: 1rem 3rem;
+	font-size: 1rem;
+	font-weight: 500;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease-out 0s;
+}
+
+#begin_quiz:hover {
+	background-color: #707070;
 }
 
 div {
@@ -66,12 +81,12 @@ form {
 
 .score-grid {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 1fr 1fr;
 	grid-gap: 1rem;
 	margin: 1rem auto 1rem;
 }
 
-button {
+.answer_button {
 	width: 50%;
 	margin: auto auto auto;
 	background-color: #8c8c8c;
@@ -99,14 +114,37 @@ button:hover {
 	border-radius: 4px;
 	font-size: 1rem;
 	font-weight: 300;
-	padding: 1rem 2rem;
+	padding: 1rem 1rem;
 	margin: auto auto auto;
-	width: 35%;
+	text-align: center;
+	width: 30%;
 }
 
 #next_plane {
-	width: 35%;
+	opacity: 0;
+	display: flex;
 	margin: auto auto auto;
-	padding: 1rem 2rem;
-	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: auto auto;
+	width: 30%;
+	background-color: #8c8c8c;
+	border-color: #000;
+	border-style: solid;
+	border-width: 0.1;
+	border-radius: 4px;
+	color: #FFF;
+	padding: 1rem 3rem;
+	font-size: 1rem;
+	font-weight: 500;
+	transition: background-color 0.3s ease-out 0s;
+}
+
+#next_plane:hover {
+	background-color: #707070;
+}
+
+#next_plane.show {
+	opacity: 1;
+	transition: opacity 1s;
 }

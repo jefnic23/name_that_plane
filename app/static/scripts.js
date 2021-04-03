@@ -13,13 +13,13 @@ function getAnswer(answer) {
     if (guess == aircraftTrue) {
         document.getElementById(answer).style.backgroundColor = "green";
         correct_guesses++;
-        $("#next_plane").fadeIn();
+        document.getElementById('next_plane').classList.toggle("show");
     } else {
         document.getElementById(answer).style.backgroundColor = 'red';
         for (var i=0; i < document.getElementsByTagName('button').length; i++) {
             if (document.getElementsByTagName('button')[i].value == aircraftTrue) {
                 document.getElementsByTagName('button')[i].style.backgroundColor = 'green';
-                $("#next_plane").fadeIn();
+                document.getElementById('next_plane').classList.toggle("show"); 
             };
         };
     };

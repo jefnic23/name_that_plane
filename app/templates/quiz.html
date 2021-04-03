@@ -96,8 +96,8 @@
 				document.getElementsByClassName("answer_button")[i].disabled = false;
 				document.getElementsByClassName("answer_button")[i].style.backgroundColor = "";
 			}
-
-			document.getElementById("next_plane").style.display = "none";
+			
+			document.getElementById('next_plane').classList.toggle("show");
 			document.getElementById("score").innerHTML = correct_guesses + "/" + image_index;
 		})
 
