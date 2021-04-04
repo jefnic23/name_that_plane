@@ -6,10 +6,13 @@
 	<script type="text/javascript">
 
 		var images = {{ images | tojson }};
+		var data = {{ data | tojson }}
 		var image_index = 0
 		var correct_guesses = 0;
 
 		var aircraftTrue = images[image_index].split('_')[0];
+		var link = data[images[image_index].split('.')[0]][1];
+		var copyright = data[images[image_index].split('.')[0]][2];
 		var planeTypes = [... new Set(images.filter(function(x) {
 			if (x.split('_')[0] === aircraftTrue) {
 				return false;
@@ -34,7 +37,9 @@
 		<img src="{{ url_for('static', filename='logo.png') }}" class="logo"/>
 	</section>
 	<section class="game-section">
-		<img id='image' class="plane"/>
+		<div class="img-container">
+			<a id="link" href="" target="_blank"><img id='image' class="plane"/></a><br/>
+		</div>
 		<div class="game-grid">
 			<button class="answer_button" id="answer-1" onClick="getAnswer('answer-1')"></button>
 			<button class="answer_button" id="answer-2" onClick="getAnswer('answer-2')"></button>
@@ -49,6 +54,8 @@
 	<script>
 
 		document.getElementById('image').src = "static/images/" + images[image_index];
+		document.getElementById('link').href = "https://www.planespotters.net/" + link;
+		document.getElementById('link').insertAdjacentText("beforeend", copyright);
 		document.getElementById('answer-1').innerHTML = answer1;
 		document.getElementById('answer-2').innerHTML = answer2;
 		document.getElementById('answer-3').innerHTML = answer3;
@@ -62,9 +69,11 @@
 
 		var nextPlane = document.getElementById("next_plane");
 		nextPlane.addEventListener("click", function() {
+			document.getElementById('image').nextSibling.remove();
 			image_index++;
-			document.getElementById('image').src = "static/images/" + images[image_index];
 			aircraftTrue = images[image_index].split('_')[0];
+			link = data[images[image_index].split('.')[0]][1];
+			copyright = data[images[image_index].split('.')[0]][2];
 			planeTypes = [... new Set(images.filter(function(x) {
 				if (x.split('_')[0] === aircraftTrue) {
 					return false;
@@ -82,6 +91,9 @@
 			answer3 = choices[2];
 			answer4 = choices[3];
 
+			document.getElementById('image').src = "static/images/" + images[image_index];
+			document.getElementById('link').href = "https://www.planespotters.net/" + link;
+			document.getElementById('link').insertAdjacentText("beforeend", copyright);
 			document.getElementById('answer-1').innerHTML = answer1;
 			document.getElementById('answer-2').innerHTML = answer2;
 			document.getElementById('answer-3').innerHTML = answer3;

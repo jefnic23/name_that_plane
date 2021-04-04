@@ -1,5 +1,5 @@
-from flask import render_template, request, redirect, url_for, jsonify
-import random, glob, os
+from flask import render_template, request, redirect, url_for
+import random, glob, os, json
 from app import app
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,4 +13,6 @@ def index():
 def quiz():
     files = [os.path.basename(f) for f in glob.glob('app/static/images/*.jpg')]
     images = random.sample(files, len(files))
-    return render_template('quiz.html', images=images)
+    with open('app/static/data.json') as f:
+        data = json.load(f)
+    return render_template('quiz.html', images=images, data=data)
