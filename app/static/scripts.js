@@ -14,12 +14,14 @@ function getAnswer(answer) {
         document.getElementById(answer).style.backgroundColor = "green";
         correct_guesses++;
         document.getElementById('next_plane').classList.toggle("show");
+        document.getElementById("next_plane").disabled = false;
     } else {
         document.getElementById(answer).style.backgroundColor = 'red';
         for (var i=0; i < document.getElementsByTagName('button').length; i++) {
             if (document.getElementsByTagName('button')[i].value == aircraftTrue) {
                 document.getElementsByTagName('button')[i].style.backgroundColor = 'green';
                 document.getElementById('next_plane').classList.toggle("show"); 
+                document.getElementById("next_plane").disabled = false;
             };
         };
     };

@@ -53,6 +53,7 @@
 	</section>
 	<script>
 
+		document.getElementById("next_plane").disabled = true;
 		document.getElementById('image').src = "static/images/" + images[image_index];
 		document.getElementById('link').href = "https://www.planespotters.net/" + link;
 		document.getElementById('link').insertAdjacentText("beforeend", copyright);
@@ -69,6 +70,7 @@
 
 		var nextPlane = document.getElementById("next_plane");
 		nextPlane.addEventListener("click", function() {
+			document.getElementById("next_plane").disabled = true;
 			document.getElementById('image').nextSibling.remove();
 			image_index++;
 			aircraftTrue = images[image_index].split('_')[0];
