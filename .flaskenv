@@ -1,1 +1,0 @@
-FLASK_APP=spot_the_plane.py
